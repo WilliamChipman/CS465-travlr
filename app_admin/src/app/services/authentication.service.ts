@@ -33,7 +33,7 @@ export class AuthenticationService {
   }
   public isLoggedIn(): boolean {
     const token: string = this.getToken();
-    if (token) {
+    if (token != 'null') {
       const payload = JSON.parse(atob(token.split('.')[1]));
       return payload.exp > Date.now() / 1000;
     } else {
@@ -43,12 +43,15 @@ export class AuthenticationService {
   public getCurrentUser(): User {
     if (this.isLoggedIn()) {
       const token: string = this.getToken();
-      const { email, name } = JSON.parse(atob(token.split('.')[1]));
-      return { email, name } as User;
-    } else {
-      const email: string = '';
-      const name: string = '';
-      return { email, name } as User;
+
+      if (token != 'null') {
+        const { email, name } = JSON.parse(atob(token.split('.')[1]));
+        return { email, name } as User;
+      }
     }
+
+    const email: string = '';
+    const name: string = '';
+    return { email, name } as User;
   }
 }

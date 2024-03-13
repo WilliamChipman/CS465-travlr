@@ -3,11 +3,13 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../models/user';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule, NavbarComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })

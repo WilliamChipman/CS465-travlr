@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-navbar',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
@@ -11,7 +15,7 @@ export class NavbarComponent implements OnInit {
   public isLoggedIn(): boolean {
     return this.authenticationService.isLoggedIn();
   }
-  private onLogout(): void {
+  protected onLogout(): void {
     return this.authenticationService.logout();
   }
 }
