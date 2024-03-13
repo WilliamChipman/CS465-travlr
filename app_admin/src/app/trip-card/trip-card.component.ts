@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Trip } from '../models/trip';
 import { AuthenticationService } from '../services/authentication.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-trip-card',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './trip-card.component.html',
   styleUrl: './trip-card.component.css',
 })

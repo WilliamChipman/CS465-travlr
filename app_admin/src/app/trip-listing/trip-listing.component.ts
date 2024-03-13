@@ -7,12 +7,11 @@ import { Trip } from '../models/trip';
 import { AuthenticationService } from '../services/authentication.service';
 
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-trip-listing',
   standalone: true,
-  imports: [CommonModule, TripCardComponent, FormsModule],
+  imports: [CommonModule, TripCardComponent],
   templateUrl: './trip-listing.component.html',
   styleUrl: './trip-listing.component.css',
   providers: [TripDataService],
