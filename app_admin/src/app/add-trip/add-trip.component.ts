@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TripDataService } from '../services/trip-data.service';
+import { Trip } from '../models/trip';
 
 @Component({
   selector: 'app-add-trip',
