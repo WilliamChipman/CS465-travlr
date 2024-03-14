@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
 
 import { Trip } from '../models/trip';
@@ -23,7 +23,11 @@ export class TripDataService {
   }
 
   addTrip(formData: Trip): Observable<Trip[]> {
-    return this.http.post<Trip[]>(this.tripUrl, formData);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('travlr-token')}`,
+    });
+    return this.http.post<Trip[]>(this.tripUrl, formData, { headers: headers });
   }
 
   getTrip(tripCode: string): Observable<Trip[]> {
@@ -31,7 +35,13 @@ export class TripDataService {
   }
 
   updateTrip(formData: Trip): Observable<Trip[]> {
-    return this.http.put<Trip[]>(this.tripUrl + '/' + formData.code, formData);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('travlr-token')}`,
+    });
+    return this.http.put<Trip[]>(this.tripUrl + '/' + formData.code, formData, {
+      headers: headers,
+    });
   }
 
   public login(user: User): Promise<AuthResponse> {
